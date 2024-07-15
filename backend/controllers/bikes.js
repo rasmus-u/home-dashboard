@@ -61,8 +61,7 @@ bikeRouter.get('/:id', async (request, response) => {
 
   try {
     const apiResponse = await axios.post(apiUrl, query, headers)
-    console.log(apiResponse)
-    response.status(200).json(apiResponse.data)
+    response.status(200).json(apiResponse.data.data.bikeRentalStation)
   } catch (error) {
     console.error(error)
     response.status(500).send('Internal server error.')
