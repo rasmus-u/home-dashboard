@@ -2,6 +2,7 @@ const bikeRouter = require('express').Router()
 const axios = require('axios')
 const config = require('../utils/config')
 
+// https://digitransit.fi/en/developers/apis/1-routing-api/bicycling/
 
 const apiUrl = config.HSL_API_URL
 const headers = {
