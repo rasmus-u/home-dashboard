@@ -74,7 +74,7 @@ bikeRouter.get('/multipleStations/*', async (request, response) => {
   const stationIdsPath = request.params[0]
   const stationIds = stationIdsPath.split('/').filter(id => id)
 
-  if (stationIds.length() > 5) {
+  if (stationIds.length > 5) {
     // too many stations for query safety
     response.status(400).send('Too many stations in query')
   }
