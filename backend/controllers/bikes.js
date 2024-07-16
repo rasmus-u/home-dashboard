@@ -68,4 +68,42 @@ bikeRouter.get('/:id', async (request, response) => {
   }
 })
 
+bikeRouter.get('/multipleStations/*', async (request, response) => {
+  // Multiple stations
+
+  const stationIdsPath = request.params[0]
+  const stationIds = stationIdsPath.split('/').filter(id => id)
+
+  if (stationIds.length() > 5) {
+    // too many stations for query safety
+    response.status(400).send('Too many stations in query')
+  }
+
+  const stationQuery = (stationId) => `
+        station${stationId}: bikeRentalStation(id: "${stationId}") {
+          stationId
+          name
+          bikesAvailable
+          spacesAvailable
+        }
+    `
+
+  const baseQuery = {
+    query: `
+      query {
+        ${stationIds.map(id => stationQuery(id))}
+      }
+    `
+  }
+
+  try {
+    const apiResponse = await axios.post(apiUrl, baseQuery, headers)
+    const data = Object.values(apiResponse.data.data)
+    response.status(200).json(data)
+  } catch (error) {
+    console.error(error)
+    response.status(500).send('Internal server error.')
+  }
+})
+
 module.exports = bikeRouter
