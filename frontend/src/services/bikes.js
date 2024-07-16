@@ -11,4 +11,11 @@ const getStation = async (id) => {
   return response.data
 }
 
-export default { getStation }
+const getMultipleStations = async (ids) => {
+  const idsPath = ids.join('/')
+  const url = `${baseUrl}/multipleStations/${idsPath}`
+  const response = await axios.get(url)
+  return response.data
+}
+
+export default { getAllStations, getStation, getMultipleStations }
