@@ -25,4 +25,12 @@ export const getStop = (id) => {
   }
 }
 
+export const getStops = (ids) => {
+  return async dispatch => {
+    const stops = await stopService.getMultipleStops(ids)
+
+    dispatch(updateStops(stops))
+  }
+}
+
 export default stopSlice.reducer

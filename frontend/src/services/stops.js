@@ -6,4 +6,11 @@ const getStop = async (id) => {
   return response.data
 }
 
-export default { getStop }
+const getMultipleStops = async (ids) => {
+  const idsPath = ids.join('/')
+  const url = `${baseUrl}/multipleStops/${idsPath}`
+  const response = await axios.get(url)
+  return response.data
+}
+
+export default { getStop, getMultipleStops }
