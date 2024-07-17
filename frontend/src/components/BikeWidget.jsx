@@ -8,7 +8,7 @@ const BikeWidget = () => {
   return (
     <div className="flex flex-col bg-primary-light rounded-xl m-2 p-2 gap-2">
       {bikeStations.map(station =>
-        <BikeStation bikeStopData={station} />
+        <BikeStation key={station.stationId} bikeStopData={station} />
       )}
     </div>
   )
