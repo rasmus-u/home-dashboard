@@ -15,7 +15,8 @@ export default {
           DEFAULT: '#E2E2E2',
           dark: '#FFD074'
         },
-        tram_green: '#359861'
+        tram_green: '#359861',
+        bus_blue: '#0086CE'
       }
     },
   },
