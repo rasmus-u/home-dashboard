@@ -5,6 +5,7 @@ import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
 import StopWidget from "./components/StopWidget"
 import { updateTime } from "./reducers/timeReducer"
+import ClockWidget from "./components/ClockWidget"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <>
+      <ClockWidget />
       {stops.map(stop =>
         <StopWidget stop={stop} />
       )}
