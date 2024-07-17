@@ -4,12 +4,16 @@ import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
 import StopWidget from "./components/StopWidget"
+import { updateTime } from "./reducers/timeReducer"
 
 const App = () => {
+  const dispatch = useDispatch()
+
   const stationIds = ['033', '070', '162']
   const stopIds = ['HSL:1130439', 'HSL:1130125']
 
-  const dispatch = useDispatch()
+  // Update the time every 10 seconds (we are only displaying minutes anyways)
+  setInterval(() => dispatch(updateTime()), 10000)
 
   const stops = useSelector(state => state.stops)
 
@@ -20,10 +24,10 @@ const App = () => {
 
   return (
     <>
-      <BikeWidget />
       {stops.map(stop =>
         <StopWidget stop={stop} />
       )}
+      <BikeWidget />
     </>
 
   )

@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+
 const StopRoute = ({ route, type }) => {
 
   const vehicleColor = (() => {
@@ -10,9 +12,9 @@ const StopRoute = ({ route, type }) => {
   });
 
   const arrivalHour = Math.floor(route.arrival / (60 * 60))
-  const arrivalMinute = Math.round(route.arrival % (60 * 60) / 60)
+  const arrivalMinute = Math.round(route.arrival % (60 * 60 - 1) / 60)
 
-  const now = new Date()
+  const now = new Date(useSelector(state => state.time))
   const timeNow = (now - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 1000
   const minutesToArrival = Math.round((route.arrival - timeNow) % (60 * 60) / 60)
 
