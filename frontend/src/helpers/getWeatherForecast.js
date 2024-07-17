@@ -12,9 +12,9 @@ const getWeatherForecast = async (area, duration, step) => {
       connection.getData({
         requestParameter: "temperature,windspeedms",
         begin: new Date(),
-        end: new Date((new Date()).getTime() + 26 * 60 * 60 * 1000),
-        timestep: 60 * 60 * 1000,
-        sites: "Helsinki",
+        end: new Date((new Date()).getTime() + duration),
+        timestep: step,
+        sites: area,
         callback: (data, errors) => {
           if (errors.length > 0) {
             console.error(errors);
