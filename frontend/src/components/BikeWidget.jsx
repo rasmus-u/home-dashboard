@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import BikeStop from "./BikeStop"
+import BikeStation from "./BikeStation"
 
 
 const BikeWidget = () => {
@@ -8,7 +8,7 @@ const BikeWidget = () => {
   return (
     <div className="flex flex-col bg-primary-light rounded-xl m-2 p-2 gap-2">
       {bikeStations.map(station =>
-        <BikeStop bikeStopData={station} />
+        <BikeStation bikeStopData={station} />
       )}
     </div>
   )

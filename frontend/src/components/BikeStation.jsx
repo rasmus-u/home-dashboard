@@ -1,6 +1,6 @@
 import bikeIcon from '../assets/bikeIcon.svg';
 
-const BikeStop = ({ bikeStopData }) => {
+const BikeStation = ({ bikeStopData }) => {
   const percentageFull = Math.round(100 * bikeStopData.bikesAvailable / bikeStopData.spacesAvailable)
 
   return (
@@ -17,4 +17,4 @@ const BikeStop = ({ bikeStopData }) => {
   )
 }
 
-export default BikeStop
+export default BikeStation
