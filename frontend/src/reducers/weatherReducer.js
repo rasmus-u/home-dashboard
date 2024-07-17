@@ -32,7 +32,7 @@ export const getWeather = (area, duration, step) => {
     // ]
     try {
       const weather = await getWeatherForecast(area, duration, step)
-      console.log('weather', weather)
+      console.log(weather)
       dispatch(updateWeather(weather))
     } catch (error) {
       console.error(error)
