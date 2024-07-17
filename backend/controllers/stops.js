@@ -12,6 +12,21 @@ const headers = {
   }
 }
 
+const toObject = (stop) => {
+  return (
+    {
+      name: stop.name,
+      id: stop.gtfsId,
+      vehicleMode: stop.vehicleMode,
+      routes: stop.stoptimesWithoutPatterns.map(pattern => ({
+        arrival: pattern.realtimeArrival,
+        headsign: pattern.headsign,
+        routeNumber: pattern.trip.route.shortName
+      }))
+    }
+  )
+}
+
 stopRouter.get('/:id', async (request, response) => {
   // One stop
 
@@ -51,17 +66,7 @@ stopRouter.get('/:id', async (request, response) => {
   try {
     const apiResponse = await axios.post(apiUrl, query, headers);
     console.log(apiResponse)
-    const stop = apiResponse.data.data.stop
-    const data = {
-      name: stop.name,
-      id: stop.gtfsId,
-      vehicleMode: stop.vehicleMode,
-      routes: stop.stoptimesWithoutPatterns.map(pattern => ({
-        arrival: pattern.realtimeArrival,
-        headsign: pattern.headsign,
-        routeNumber: pattern.trip.route.shortName
-      }))
-    };
+    const data = toObject(apiResponse.data.data.stop)
     response.status(200).json(data)
   } catch (error) {
     console.error(error)
