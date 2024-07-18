@@ -4,25 +4,8 @@ import { getWeatherForecast } from "../helpers/weather";
 const weatherSlice = createSlice({
   name: 'weather',
   initialState: {
-    city: '',
-    weatherData: {
-      temperature: {
-        values: [],
-        unit: ''
-      },
-      windspeedms: {
-        values: [],
-        unit: ''
-      },
-      totalcloudcover: {
-        values: [],
-        unit: ''
-      },
-      precipitationamount: {
-        values: [],
-        unit: ''
-      }
-    }
+    city: 'Helsinki',
+    byTime: []
   },
   reducers: {
     updateWeather(state, action) {
