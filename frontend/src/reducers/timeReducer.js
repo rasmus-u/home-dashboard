@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const timeSlice = createSlice({
   name: 'time',
-  initialState: new Date(),
+  initialState: (new Date()).toISOString(),
   reducers: {
     updateTime(state, action) {
       return (new Date()).toISOString()
