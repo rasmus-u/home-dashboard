@@ -5,7 +5,25 @@ const weatherSlice = createSlice({
   name: 'weather',
   initialState: {
     city: 'Helsinki',
-    byTime: []
+    byTime: [{
+      time: 0,
+      temperature: {
+        value: 0,
+        unit: ''
+      },
+      windspeedms: {
+        value: 0,
+        unit: ''
+      },
+      totalcloudcover: {
+        value: 0,
+        unit: ''
+      },
+      precipitationamount: {
+        value: 0,
+        unit: ''
+      }
+    }]
   },
   reducers: {
     updateWeather(state, action) {
