@@ -4,7 +4,7 @@ const SERVER_URL = 'https://opendata.fmi.fi/wfs';
 const STORED_QUERY_FORECAST =
   'fmi::forecast::harmonie::surface::point::multipointcoverage';
 
-const getWeatherForecast = async (area, duration, step) => {
+export const getWeatherForecast = async (area, duration, step) => {
   const connection = new Metolib.WfsConnection();
   return new Promise((resolve, reject) => {
     if (connection.connect(SERVER_URL, STORED_QUERY_FORECAST)) {
@@ -29,5 +29,3 @@ const getWeatherForecast = async (area, duration, step) => {
   }
   )
 }
-
-export default getWeatherForecast;
