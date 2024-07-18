@@ -10,7 +10,7 @@ const getWeatherForecast = async (area, duration, step) => {
     if (connection.connect(SERVER_URL, STORED_QUERY_FORECAST)) {
       // Connection was properly initialized. So, get the data.
       connection.getData({
-        requestParameter: "temperature,windspeedms",
+        requestParameter: "temperature,windspeedms,totalcloudcover,precipitationamount",
         begin: new Date(),
         end: new Date((new Date()).getTime() + duration),
         timestep: step,
