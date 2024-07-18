@@ -31,9 +31,20 @@ export const getWeather = (area, duration, step) => {
     //   }
     // ]
     try {
-      const weather = await getWeatherForecast(area, duration, step)
-      console.log(weather)
-      dispatch(updateWeather(weather))
+      const forecastData = await getWeatherForecast(area, duration, step)
+      console.log('full data', forecastData)
+      const locationData = forecastData.locations[0].data
+      for (const key in locationData) {
+        if (locationData.hasOwnProperty(key)) {
+          const weatherMetric = {
+            values: locationData[key].timeValuePairs,
+            unit: forecastData.properties[key].unit
+          }
+          locationData[key] = weatherMetric
+        }
+      }
+      console.log(locationData)
+      dispatch(updateWeather(locationData))
     } catch (error) {
       console.error(error)
     }
