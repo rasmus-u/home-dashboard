@@ -43,7 +43,7 @@ export const getWeather = (area, duration, step) => {
       const steps = weatherData.temperature.timeValuePairs
       const weatherDataTypes = Object.keys(weatherData)
 
-      const weatherByTime = steps.map((timeSlot, index) => {
+      const byTime = steps.map((timeSlot, index) => {
         const weatherMetrics = {
           time: timeSlot.time
         }
@@ -59,7 +59,7 @@ export const getWeather = (area, duration, step) => {
 
       const weather = {
         city,
-        weatherByTime
+        byTime
       }
       dispatch(updateWeather(weather))
     } catch (error) {
