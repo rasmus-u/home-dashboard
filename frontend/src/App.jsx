@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
@@ -15,14 +15,54 @@ const App = () => {
   const stationIds = ['033', '070', '162']
   const stopIds = ['HSL:1130439', 'HSL:1130125']
 
-  // Update the time every 10 seconds (we are only displaying minutes anyways)
-  setInterval(() => dispatch(updateTime()), 10000)
+  // useEffect(() => {
+  //   dispatch(getStations(stationIds))
+  //   dispatch(getStops(stopIds))
+  //   dispatch(getWeather('Helsinki', 12, 1))
+  // }, [])
+
+  // // Update the time every 10 seconds (we are only displaying minutes anyways)
+  // setInterval(() => {
+  //   dispatch(updateTime())
+  // }, 10000)
 
   useEffect(() => {
-    dispatch(getStations(stationIds))
-    dispatch(getStops(stopIds))
-    dispatch(getWeather('Helsinki', 12, 1))
-  }, [])
+    console.log('Updated stations')
+    dispatch(getStations(stationIds));
+    const stationInterval = setInterval(() => {
+      dispatch(getStations(stationIds));
+    }, 3 * 60 * 1000); // 3 minutes
+
+    return () => clearInterval(stationInterval);
+  }, [dispatch, stationIds]);
+
+  useEffect(() => {
+    console.log('Updated stops')
+    dispatch(getStops(stopIds));
+    const stopInterval = setInterval(() => {
+      dispatch(getStops(stopIds));
+    }, 7 * 60 * 1000); // 7 minutes
+
+    return () => clearInterval(stopInterval);
+  }, [dispatch, stopIds]);
+
+  useEffect(() => {
+    console.log('Updated weather')
+    dispatch(getWeather('Helsinki', 12, 1));
+    const weatherInterval = setInterval(() => {
+      dispatch(getWeather('Helsinki', 12, 1));
+    }, 4 * 3600 * 1000); // 4 hour
+
+    return () => clearInterval(weatherInterval);
+  }, [dispatch]);
+
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      dispatch(updateTime());
+    }, 10000); // 10 seconds
+
+    return () => clearInterval(timeInterval);
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col bg-background p-2 gap-2 h-screen">
