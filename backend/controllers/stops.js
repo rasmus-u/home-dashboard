@@ -45,7 +45,7 @@ stopRouter.get('/:id', async (request, response) => {
           vehicleMode
           gtfsId
           stoptimesWithoutPatterns(
-            timeRange: 1200 
+            timeRange: 3600
             omitCanceled: false 
             numberOfDepartures: 10)
           {
@@ -91,7 +91,7 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
           vehicleMode
           gtfsId
           stoptimesWithoutPatterns(
-            timeRange: 1200 
+            timeRange: 3600
             omitCanceled: false 
             numberOfDepartures: 10)
           {
