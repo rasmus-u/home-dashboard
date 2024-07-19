@@ -96,10 +96,35 @@ bikeRouter.get('/multipleStations/*', async (request, response) => {
     `
   }
 
+  const bikes = [
+    {
+      "stationId": "033",
+      "name": "Kauppakorkeakoulu",
+      "bikesAvailable": 0,
+      "spacesAvailable": 16
+    },
+    {
+      "stationId": "070",
+      "name": "Sammonpuistikko",
+      "bikesAvailable": 2,
+      "spacesAvailable": 13
+    },
+    {
+      "stationId": "162",
+      "name": "Leppäsuonaukio",
+      "bikesAvailable": 5,
+      "spacesAvailable": 24
+    }
+  ]
+
   try {
-    const apiResponse = await axios.post(apiUrl, baseQuery, headers)
-    const data = Object.values(apiResponse.data.data)
-    response.status(200).json(data)
+    if (process.env.MODE === 'dev') {
+      return response.status(200).json(bikes)
+    } else {
+      const apiResponse = await axios.post(apiUrl, baseQuery, headers)
+      const data = Object.values(apiResponse.data.data)
+      response.status(200).json(data)
+    }
   } catch (error) {
     console.error(error)
     response.status(500).send('Internal server error.')

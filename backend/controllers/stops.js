@@ -115,11 +115,107 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
     `
   }
 
+  const stops = [
+    {
+      "name": "Hanken",
+      "id": "HSL:1130439",
+      "vehicleMode": "TRAM",
+      "routes": [
+        {
+          "arrival": 64625,
+          "headsign": "Olympiaterm. via Kamppi",
+          "routeNumber": "2"
+        },
+        {
+          "arrival": 64905,
+          "headsign": "Katajanokka via Lasipalatsi",
+          "routeNumber": "4"
+        },
+        {
+          "arrival": 65216,
+          "headsign": "Kirurgi via Lasipalatsi",
+          "routeNumber": "10"
+        },
+        {
+          "arrival": 65434,
+          "headsign": "Olympiaterm. via Kamppi",
+          "routeNumber": "2"
+        },
+        {
+          "arrival": 65645,
+          "headsign": "Katajanokka via Lasipalatsi",
+          "routeNumber": "4"
+        },
+        {
+          "arrival": 66000,
+          "headsign": "Kirurgi via Lasipalatsi",
+          "routeNumber": "10"
+        },
+        {
+          "arrival": 66240,
+          "headsign": "Olympiaterm. via Kamppi",
+          "routeNumber": "2"
+        },
+        {
+          "arrival": 66480,
+          "headsign": "Katajanokka via Lasipalatsi",
+          "routeNumber": "4"
+        },
+        {
+          "arrival": 66720,
+          "headsign": "Kirurgi via Lasipalatsi",
+          "routeNumber": "10"
+        },
+        {
+          "arrival": 67020,
+          "headsign": "Olympiaterm. via Kamppi",
+          "routeNumber": "2"
+        }
+      ]
+    },
+    {
+      "name": "Arkadiankatu",
+      "id": "HSL:1130125",
+      "vehicleMode": "BUS",
+      "routes": [
+        {
+          "arrival": 64862,
+          "headsign": "Jätkäsaari via Ruoholahti (M)",
+          "routeNumber": "8X"
+        },
+        {
+          "arrival": 65379,
+          "headsign": "Jätkäsaari via Ruoholahti (M)",
+          "routeNumber": "8X"
+        },
+        {
+          "arrival": 66300,
+          "headsign": "Jätkäsaari via Ruoholahti (M)",
+          "routeNumber": "8X"
+        },
+        {
+          "arrival": 67020,
+          "headsign": "Jätkäsaari via Ruoholahti (M)",
+          "routeNumber": "8X"
+        },
+        {
+          "arrival": 67740,
+          "headsign": "Jätkäsaari via Ruoholahti (M)",
+          "routeNumber": "8X"
+        }
+      ]
+    }
+  ]
+
   try {
-    const apiResponse = await axios.post(apiUrl, baseQuery, headers)
-    const data = Object.values(apiResponse.data.data)
-    const stops = data.map(v => toObject(v))
-    response.status(200).json(stops)
+    if (process.env.MODE === 'dev') {
+      return response.status(200).json(stops)
+    } else {
+      const apiResponse = await axios.post(apiUrl, baseQuery, headers)
+      const data = Object.values(apiResponse.data.data)
+      const stops = data.map(v => toObject(v))
+      response.status(200).json(stops)
+    }
   } catch (error) {
     console.error(error)
     response.status(500).send('Internal server error.')
