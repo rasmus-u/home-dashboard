@@ -1,5 +1,6 @@
-import HSL_tram_logo from '../assets/HSL_tram_logo.png'
-import HSL_bus_logo from '../assets/HSL_bus_logo.png'
+import HSL_tram from '../assets/HSL_tram.svg'
+import HSL_bus from '../assets/HSL_bus.svg'
+import HSL_metro from '../assets/HSL_metro.svg'
 import StopRoute from './StopRoute'
 
 const StopWidget = ({ stop }) => {
@@ -7,11 +8,13 @@ const StopWidget = ({ stop }) => {
   const logo = (() => {
     switch (stop.vehicleMode) {
       case 'TRAM':
-        return HSL_tram_logo
+        return HSL_tram
       case 'BUS':
-        return HSL_bus_logo
+        return HSL_bus
+      case 'SUBWAY':
+        return HSL_metro
       default:
-        return HSL_bus_logo
+        return HSL_bus
     }
   })
 

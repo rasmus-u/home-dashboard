@@ -6,6 +6,10 @@ const StopRoute = ({ route, type }) => {
     switch (type) {
       case 'TRAM':
         return 'bg-tram_green';
+      case 'BUS':
+        return 'bg-bus_blue';
+      case 'SUBWAY':
+        return 'bg-metro_red';
       default:
         return 'bg-bus_blue';
     }

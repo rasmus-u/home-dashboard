@@ -15,6 +15,7 @@ export default {
         primary: '#FFFFFF',
         tram_green: '#359861',
         bus_blue: '#0086CE',
+        metro_red: '#C33818',
         alepa_yellow: '#FFD074',
         rain: '#5BC1F8'
       }
