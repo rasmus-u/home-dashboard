@@ -11,4 +11,6 @@ app.use(express.json())
 app.use('/api/bikeStations', bikeRouter)
 app.use('/api/stops', stopRouter)
 
+app.use(express.static('dist'))
+
 module.exports = app
