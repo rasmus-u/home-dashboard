@@ -11,6 +11,11 @@ import PouringRain from "../assets/POURING_RAIN.svg"
 
 const WeatherWidget = () => {
   const weather = useSelector(state => state.weather)
+  const byTime = weather['byTime'].filter(weather => {
+    return new Date(weather.time) > new Date(new Date() - 30 * 60000)
+  })
+  console.log(weather.byTime)
+  console.log(byTime)
 
   const getWeatherIcon = (weather) => {
     switch (getWeatherType(weather)) {
@@ -33,9 +38,9 @@ const WeatherWidget = () => {
 
   return (
     <div className="flex flex-col w-64 rounded-xl overflow-hidden flex-grow h-full bg-background">
-      <WeatherEmblem city={weather.city} weather={weather.byTime[0]} icon={getWeatherIcon(weather.byTime[0])} />
+      <WeatherEmblem city={weather.city} weather={byTime[0]} icon={getWeatherIcon(byTime[0])} />
       <ul className="flex flex-col gap-1 overflow-auto h-full justify-between pt-2">
-        {weather.byTime.slice(1, 13).map(weather =>
+        {byTime.slice(1).map(weather =>
           <WeatherHour weather={weather} icon={getWeatherIcon(weather)} key={weather.time} />
         )}
       </ul>
