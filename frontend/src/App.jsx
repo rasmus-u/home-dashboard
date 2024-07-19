@@ -7,6 +7,7 @@ import StopWidget from "./components/StopWidget"
 import { updateTime } from "./reducers/timeReducer"
 import ClockWidget from "./components/ClockWidget"
 import { getWeather } from "./reducers/weatherReducer"
+import WeatherWidget from "./components/WeatherWidget"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -22,17 +23,22 @@ const App = () => {
   useEffect(() => {
     dispatch(getStations(stationIds))
     dispatch(getStops(stopIds))
-    dispatch(getWeather('Helsinki', 60 * 60 * 1000 * 4, 60 * 60 * 1000))
+    dispatch(getWeather('Helsinki', 12, 1))
   }, [])
 
   return (
-    <>
+    <div className="bg-black">
       <ClockWidget />
-      {stops.map(stop =>
-        <StopWidget stop={stop} />
-      )}
+      <div className="flex flex-row">
+        <div>
+          {stops.map(stop =>
+            <StopWidget stop={stop} />
+          )}
+        </div>
+        <WeatherWidget />
+      </div>
       <BikeWidget />
-    </>
+    </div>
 
   )
 }
