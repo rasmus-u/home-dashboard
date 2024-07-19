@@ -15,12 +15,16 @@ const StopRoute = ({ route, type }) => {
     }
   });
 
-  const arrivalHour = Math.floor(route.arrival / (60 * 60))
-  const arrivalMinute = Math.round(route.arrival % (60 * 60 - 1) / 60)
+
+  const arrivalHour = Math.floor(route.arrival / 3600);
+  const remainingSeconds = route.arrival % 3600;
+
+  // Calculate minutes from the remaining seconds
+  const arrivalMinute = Math.floor(remainingSeconds / 60);
 
   const now = new Date(useSelector(state => state.time))
-  const timeNow = (now - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 1000
-  const minutesToArrival = Math.round((route.arrival - timeNow) % (60 * 60) / 60)
+  const secondsNow = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
+  const minutesToArrival = Math.floor(route.arrival - secondsNow)
 
   const minutesDisplay =
     minutesToArrival < 0
@@ -29,22 +33,17 @@ const StopRoute = ({ route, type }) => {
         ? `${minutesToArrival}min`
         : ''
 
-
-  if (minutesToArrival < -1) {
-    return null
-  }
-
   return (
     <li className="flex flex-row items-center py-1 justify-between">
-      <div className={`${vehicleColor()} text-white rounded-xl w-16 text-center`}>
+      <div className={`${vehicleColor()} text-white rounded-xl w-20 text-center text-xl`}>
         {route.routeNumber}
       </div>
-      <p className="font-bold text-primary">
+      <p className="font-bold text-primary text-lg">
         {arrivalHour > 9 ? arrivalHour : `0${arrivalHour}`}
         :
         {arrivalMinute > 9 ? arrivalMinute : `0${arrivalMinute}`}
       </p>
-      <div className="w-12 text-right">
+      <div className="w-12 text-right text-lg">
         <p className="text-danger font-bold">
           {minutesDisplay}
         </p>
