@@ -15,17 +15,6 @@ const App = () => {
   const stationIds = ['033', '070', '162']
   const stopIds = ['HSL:1130439', 'HSL:1130125']
 
-  // useEffect(() => {
-  //   dispatch(getStations(stationIds))
-  //   dispatch(getStops(stopIds))
-  //   dispatch(getWeather('Helsinki', 12, 1))
-  // }, [])
-
-  // // Update the time every 10 seconds (we are only displaying minutes anyways)
-  // setInterval(() => {
-  //   dispatch(updateTime())
-  // }, 10000)
-
   useEffect(() => {
     console.log('Updated stations')
     dispatch(getStations(stationIds));
