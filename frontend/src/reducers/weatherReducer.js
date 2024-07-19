@@ -34,7 +34,9 @@ const weatherSlice = createSlice({
 
 export const { updateWeather } = weatherSlice.actions
 
-export const getWeather = (area, duration, step) => {
+export const getWeather = (area, duration_hours, step_hours) => {
+  const duration = 60 * 60 * 1000 * duration_hours
+  const step = step_hours * 60 * 60 * 1000
   return async dispatch => {
     try {
       const forecastData = await getWeatherForecast(area, duration, step)
