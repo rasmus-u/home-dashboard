@@ -3,8 +3,6 @@ import bikeIcon from '../assets/bikeIcon.svg';
 const BikeStation = ({ bikeStopData }) => {
   const percentageFull = Math.round(100 * bikeStopData.bikesAvailable / bikeStopData.spacesAvailable)
 
-  console.log(percentageFull)
-
   return (
     <div className="flex flex-row h-16 justify-center items-center gap-3 bg-widgets rounded-xl">
       <p className='p-2 ml-2 flex-none w-40 font-semibold text-primary'>{bikeStopData.name}</p>
