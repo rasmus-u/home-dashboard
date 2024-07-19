@@ -14,8 +14,6 @@ const WeatherWidget = () => {
   const byTime = weather['byTime'].filter(weather => {
     return new Date(weather.time) > new Date(new Date() - 30 * 60000)
   })
-  console.log(weather.byTime)
-  console.log(byTime)
 
   const getWeatherIcon = (weather) => {
     switch (getWeatherType(weather)) {
