@@ -29,6 +29,11 @@ const StopRoute = ({ route, type }) => {
         ? `${minutesToArrival}min`
         : ''
 
+
+  if (minutesToArrival < -1) {
+    return null
+  }
+
   return (
     <li className="flex flex-row items-center py-1 justify-between">
       <div className={`${vehicleColor()} text-white rounded-xl w-16 text-center`}>
