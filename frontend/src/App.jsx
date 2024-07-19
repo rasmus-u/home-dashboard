@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
-import StopWidget from "./components/StopWidget"
+import StopHolder from "./components/StopHolder"
 import { updateTime } from "./reducers/timeReducer"
 import ClockWidget from "./components/ClockWidget"
 import { getWeather } from "./reducers/weatherReducer"
@@ -27,17 +27,19 @@ const App = () => {
   }, [])
 
   return (
-    <div className="bg-black">
-      <ClockWidget />
-      <div className="flex flex-row">
-        <div>
-          {stops.map(stop =>
-            <StopWidget stop={stop} />
-          )}
+    <div className="flex flex-col bg-black p-2 gap-2 max-h-screen">
+      <main className="flex flex-row justify-end h-full gap-2">
+        <div className="flex flex-col w-full gap-2">
+          <ClockWidget />
+          <StopHolder />
         </div>
-        <WeatherWidget />
-      </div>
-      <BikeWidget />
+        <div className="w-fit">
+          <WeatherWidget />
+        </div>
+      </main>
+      <footer>
+        <BikeWidget />
+      </footer>
     </div>
 
   )
