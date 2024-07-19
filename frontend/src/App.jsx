@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
@@ -18,8 +18,6 @@ const App = () => {
   // Update the time every 10 seconds (we are only displaying minutes anyways)
   setInterval(() => dispatch(updateTime()), 10000)
 
-  const stops = useSelector(state => state.stops)
-
   useEffect(() => {
     dispatch(getStations(stationIds))
     dispatch(getStops(stopIds))
@@ -27,17 +25,17 @@ const App = () => {
   }, [])
 
   return (
-    <div className="flex flex-col bg-black p-2 gap-2 max-h-screen">
-      <main className="flex flex-row justify-end h-full gap-2">
+    <div className="flex flex-col bg-black p-2 gap-2 h-screen">
+      <main className="flex flex-row h-full gap-2 flex-grow">
         <div className="flex flex-col w-full gap-2">
           <ClockWidget />
           <StopHolder />
         </div>
-        <div className="w-fit">
+        <div className="w-fit h-full flex-grow">
           <WeatherWidget />
         </div>
       </main>
-      <footer>
+      <footer className="h-auto">
         <BikeWidget />
       </footer>
     </div>
