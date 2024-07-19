@@ -32,9 +32,9 @@ const WeatherWidget = () => {
   }
 
   return (
-    <div className="flex flex-col w-64 rounded-xl bg-white overflow-hidden flex-grow h-full">
+    <div className="flex flex-col w-64 rounded-xl overflow-hidden flex-grow h-full bg-background">
       <WeatherEmblem city={weather.city} weather={weather.byTime[0]} icon={getWeatherIcon(weather.byTime[0])} />
-      <ul className="bg-primary flex flex-col gap-1 overflow-auto h-full justify-between py-2">
+      <ul className="flex flex-col gap-1 overflow-auto h-full justify-between py-2">
         {weather.byTime.slice(1, 13).map(weather =>
           <WeatherHour weather={weather} icon={getWeatherIcon(weather)} key={weather.time} />
         )}

@@ -25,7 +25,7 @@ const App = () => {
   }, [])
 
   return (
-    <div className="flex flex-col bg-black p-2 gap-2 h-screen">
+    <div className="flex flex-col bg-background p-2 gap-2 h-screen">
       <main className="flex flex-row h-full gap-2 flex-grow">
         <div className="flex flex-col w-full gap-2">
           <ClockWidget />

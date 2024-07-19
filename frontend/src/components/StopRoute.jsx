@@ -30,8 +30,7 @@ const StopRoute = ({ route, type }) => {
       <div className={`${vehicleColor()} text-white rounded-xl w-16 text-center`}>
         {route.routeNumber}
       </div>
-      {/* <p>{route.headsign}</p> */}
-      <p className="font-bold">
+      <p className="font-bold text-primary">
         {arrivalHour > 9 ? arrivalHour : `0${arrivalHour}`}
         :
         {arrivalMinute > 9 ? arrivalMinute : `0${arrivalMinute}`}
