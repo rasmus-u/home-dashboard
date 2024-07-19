@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        '10xl': '10rem'
+      },
       colors: {
         danger: '#E26D5C',
         confirmation: '#1848FF',

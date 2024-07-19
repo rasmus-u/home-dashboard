@@ -34,8 +34,8 @@ const StopRoute = ({ route, type }) => {
         : ''
 
   return (
-    <li className="flex flex-row items-center py-1 justify-between">
-      <div className={`${vehicleColor()} text-white rounded-xl w-20 text-center text-xl`}>
+    <li className="flex flex-row items-center justify-between">
+      <div className={`${vehicleColor()} text-white rounded-xl w-20 text-center text-2xl`}>
         {route.routeNumber}
       </div>
       <p className="font-bold text-primary text-lg">

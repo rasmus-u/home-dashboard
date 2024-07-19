@@ -54,9 +54,9 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col bg-background p-2 gap-2 h-screen">
-      <main className="flex flex-row h-full gap-2 flex-grow">
-        <div className="flex flex-col w-full gap-2">
+    <div className="flex flex-col bg-background p-4 gap-4 h-screen w-screen">
+      <main className="flex flex-row h-full gap-4 flex-grow">
+        <div className="flex flex-col w-full gap-4">
           <ClockWidget />
           <StopHolder />
         </div>

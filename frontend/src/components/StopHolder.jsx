@@ -5,7 +5,7 @@ const StopHolder = () => {
   const stops = useSelector(state => state.stops)
 
   return (
-    <div className="flex flex-col h-full gap-2">
+    <div className="flex flex-col h-full gap-4">
       {stops.map(stop =>
         <StopWidget stop={stop} />
       )}
