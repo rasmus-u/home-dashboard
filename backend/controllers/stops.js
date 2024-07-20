@@ -122,22 +122,22 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
       "vehicleMode": "TRAM",
       "routes": [
         {
-          "arrival": 86398,
+          "arrival": 86366,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         },
         {
-          "arrival": 86398,
+          "arrival": 86352,
           "headsign": "Katajanokka via Lasipalatsi",
           "routeNumber": "4"
         },
         {
-          "arrival": 86398,
+          "arrival": 86328,
           "headsign": "Kirurgi via Lasipalatsi",
           "routeNumber": "10"
         },
         {
-          "arrival": 86398,
+          "arrival": 86378,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         },
@@ -179,27 +179,27 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
       "vehicleMode": "BUS",
       "routes": [
         {
-          "arrival": 86398,
+          "arrival": 86310,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86398,
+          "arrival": 86312,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86398,
+          "arrival": 86313,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86398,
+          "arrival": 86314,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86398,
+          "arrival": 86315,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         }
