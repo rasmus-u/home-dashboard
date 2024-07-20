@@ -6,7 +6,7 @@ const weatherSlice = createSlice({
   initialState: {
     city: 'Helsinki',
     byTime: [{
-      time: new Date(),
+      time: (new Date()).getTime(),
       temperature: {
         value: 0,
         unit: ''
