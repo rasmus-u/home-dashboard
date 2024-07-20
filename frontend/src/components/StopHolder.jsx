@@ -7,7 +7,7 @@ const StopHolder = () => {
   return (
     <div className="flex flex-col h-full gap-4">
       {stops.map(stop =>
-        <StopWidget stop={stop} />
+        <StopWidget stop={stop} key={stop.id} />
       )}
     </div>
   )
