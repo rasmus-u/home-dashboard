@@ -24,8 +24,8 @@ const App = () => {
     dispatch(getWeather('Helsinki', 12, 1))
 
     const updateInterval = setInterval(() => {
-      setCounter(() => {
-        const updatedCounter = counter + 1;
+      setCounter((newCounter) => {
+        const updatedCounter = newCounter + 1;
         dispatch(updateTime());
         dispatch(filterRoutes());
         dispatch(filterWeather())
@@ -42,7 +42,6 @@ const App = () => {
         if (updatedCounter > 100 * 6) { // 100 minutes
           return 0; // Reset counter
         }
-
         return updatedCounter; // Return the updated counter value
       });
     }, 10 * 1000); // 10 seconds
