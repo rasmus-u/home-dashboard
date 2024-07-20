@@ -15,7 +15,11 @@ const App = () => {
   const [counter, setCounter] = useState(0)
 
   const stationIds = ['033', '070', '162']
-  const stopIds = ['HSL:1130439', 'HSL:1130125']
+  const stopIds = ['HSL:1130439', 'HSL:1040602']
+
+  // Hanken: HSL:1130439
+  // Arkadiankatu: HSL:1130125
+  // Kamppi subway: HSL:1040602
 
   useEffect(() => {
     dispatch(updateTime());
