@@ -6,7 +6,7 @@ const BikeStation = ({ bikeStopData }) => {
   return (
     <div className="flex flex-row h-20 justify-start items-center gap-3 bg-widgets rounded-xl px-4">
       <p className='p-2 flex-none w-72 font-semibold text-primary text-3xl'>{bikeStopData.name}</p>
-      <div className="bg-background h-1/2 w-full overflow-hidden rounded-2xl">
+      <div className="bg-background-light h-1/2 w-full overflow-hidden rounded-2xl">
         <div className="bg-alepa_yellow h-full" style={{ width: `${percentageFull}%` }} />
       </div>
       <div className='flex flex-row mx-2 gap-2 justify-end items-center flex-none'>
