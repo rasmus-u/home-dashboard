@@ -19,7 +19,7 @@ const StopWidget = ({ stop }) => {
   })
 
   return (
-    <div className='flex flex-col w-full px-4 py-6 bg-widgets rounded-xl h-full overflow-hidden justify-start gap-6'>
+    <div className='flex flex-col w-full px-4 py-4 bg-widgets rounded-xl h-full overflow-hidden justify-start gap-6'>
       <div className='flex flex-row items-center justify-start gap-3'>
         <img src={logo()} alt="tram" className='w-16 h-auto' />
         <h2 className='font-bold text-4xl text-primary'>{stop.name}</h2>
