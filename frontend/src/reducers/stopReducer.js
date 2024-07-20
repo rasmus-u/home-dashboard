@@ -11,11 +11,21 @@ const stopSlice = createSlice({
     updateStop(state, action) {
       const newStop = action.payload
       return state.map(stop => stop ? stop.id !== newStop.id : newStop)
+    },
+    filterRoutes(state, action) {
+      const timeNow = new Date()
+      const secondsNow = timeNow.getHours() * 3600 + timeNow.getMinutes() * 60 + timeNow.getSeconds()
+      return state.map(stop => {
+        return {
+          ...stop,
+          routes: stop.routes.filter(route => route.arrival > secondsNow - 60 * 1000)
+        }
+      })
     }
   }
 })
 
-export const { updateStops } = stopSlice.actions
+export const { updateStops, filterRoutes } = stopSlice.actions
 
 export const getStop = (id) => {
   return async dispatch => {

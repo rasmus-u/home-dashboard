@@ -28,11 +28,18 @@ const weatherSlice = createSlice({
   reducers: {
     updateWeather(state, action) {
       return action.payload
+    },
+    filterWeather(state, action) {
+      const timeNow = new Date()
+      return {
+        ...state,
+        byTime: state.byTime.filter(weather => weather.time > timeNow - 30 * 60 * 1000) // 30 minu
+      }
     }
   }
 })
 
-export const { updateWeather } = weatherSlice.actions
+export const { updateWeather, filterWeather } = weatherSlice.actions
 
 export const getWeather = (area, duration_hours, step_hours) => {
   const duration = 60 * 60 * 1000 * duration_hours

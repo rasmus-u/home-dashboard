@@ -2,11 +2,11 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
-import { getStops } from "./reducers/stopReducer"
+import { filterRoutes, getStops } from "./reducers/stopReducer"
 import StopHolder from "./components/StopHolder"
 import { updateTime } from "./reducers/timeReducer"
 import ClockWidget from "./components/ClockWidget"
-import { getWeather } from "./reducers/weatherReducer"
+import { filterWeather, getWeather } from "./reducers/weatherReducer"
 import WeatherWidget from "./components/WeatherWidget"
 import { useState } from "react"
 
@@ -27,6 +27,8 @@ const App = () => {
       setCounter(() => {
         const updatedCounter = counter + 1;
         dispatch(updateTime());
+        dispatch(filterRoutes());
+        dispatch(filterWeather())
 
         if (updatedCounter % (3 * 6) === 0) { // 3 minutes
           dispatch(getStations(stationIds));
