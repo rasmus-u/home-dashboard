@@ -115,6 +115,8 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
     `
   }
 
+  const time = new Date()
+  const now = time.getHours() * 3600 + time.getMinutes() * 60 + time.getSeconds()
   const stops = [
     {
       "name": "Hanken",
@@ -122,52 +124,52 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
       "vehicleMode": "TRAM",
       "routes": [
         {
-          "arrival": 86366,
+          "arrival": now,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         },
         {
-          "arrival": 86352,
+          "arrival": now + 30,
           "headsign": "Katajanokka via Lasipalatsi",
           "routeNumber": "4"
         },
         {
-          "arrival": 86328,
+          "arrival": now + 60,
           "headsign": "Kirurgi via Lasipalatsi",
           "routeNumber": "10"
         },
         {
-          "arrival": 86378,
+          "arrival": now + 120,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         },
         {
-          "arrival": 86391,
+          "arrival": now + 360,
           "headsign": "Katajanokka via Lasipalatsi",
           "routeNumber": "4"
         },
         {
-          "arrival": 86394,
+          "arrival": now + 400,
           "headsign": "Kirurgi via Lasipalatsi",
           "routeNumber": "10"
         },
         {
-          "arrival": 86395,
+          "arrival": now + 600,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         },
         {
-          "arrival": 86396,
+          "arrival": now + 601,
           "headsign": "Katajanokka via Lasipalatsi",
           "routeNumber": "4"
         },
         {
-          "arrival": 86398,
+          "arrival": now + 602,
           "headsign": "Kirurgi via Lasipalatsi",
           "routeNumber": "10"
         },
         {
-          "arrival": 86400,
+          "arrival": now + 610,
           "headsign": "Olympiaterm. via Kamppi",
           "routeNumber": "2"
         }
@@ -179,27 +181,27 @@ stopRouter.get('/multipleStops/*', async (request, response) => {
       "vehicleMode": "BUS",
       "routes": [
         {
-          "arrival": 86310,
+          "arrival": now,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86312,
+          "arrival": now + 30,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86313,
+          "arrival": now + 60,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86314,
+          "arrival": now + 70,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         },
         {
-          "arrival": 86315,
+          "arrival": now + 80,
           "headsign": "Jätkäsaari via Ruoholahti (M)",
           "routeNumber": "8X"
         }
