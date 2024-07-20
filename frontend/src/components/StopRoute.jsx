@@ -35,15 +35,15 @@ const StopRoute = ({ route, type }) => {
 
   return (
     <li className="flex flex-row items-center justify-between">
-      <div className={`${vehicleColor()} text-white rounded-xl w-20 text-center text-2xl`}>
+      <div className={`${vehicleColor()} text-white rounded-xl w-36 py-1 text-center text-5xl`}>
         {route.routeNumber}
       </div>
-      <p className="font-bold text-primary text-lg">
+      <p className="font-bold text-primary text-4xl">
         {arrivalHour > 9 ? arrivalHour : `0${arrivalHour}`}
         :
         {arrivalMinute > 9 ? arrivalMinute : `0${arrivalMinute}`}
       </p>
-      <div className="w-12 text-right text-lg">
+      <div className="w-12 text-right text-3xl">
         <p className="text-danger font-bold">
           {minutesDisplay}
         </p>

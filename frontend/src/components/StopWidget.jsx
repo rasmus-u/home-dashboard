@@ -19,12 +19,12 @@ const StopWidget = ({ stop }) => {
   })
 
   return (
-    <div className='w-full px-4 py-4 bg-widgets rounded-xl h-full overflow-hidden'>
-      <div className='flex flex-row items-center justify-start gap-3 pb-4'>
-        <img src={logo()} alt="tram" className='w-12 h-auto' />
-        <h2 className='font-bold text-3xl text-primary'>{stop.name}</h2>
+    <div className='flex flex-col w-full px-4 py-6 bg-widgets rounded-xl h-full overflow-hidden justify-start gap-6'>
+      <div className='flex flex-row items-center justify-start gap-3'>
+        <img src={logo()} alt="tram" className='w-16 h-auto' />
+        <h2 className='font-bold text-4xl text-primary'>{stop.name}</h2>
       </div>
-      <ul className='flex flex-col w-52 gap-2'>
+      <ul className='flex flex-col w-2/3 gap-4'>
         {stop.routes.slice(0, 5).map((route, index) =>
           <StopRoute key={index} route={route} type={stop.vehicleMode} />
         )}
