@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { getStations } from "./reducers/bikeReducer"
 import BikeWidget from "./components/BikeWidget"
 import { getStops } from "./reducers/stopReducer"
@@ -8,50 +8,48 @@ import { updateTime } from "./reducers/timeReducer"
 import ClockWidget from "./components/ClockWidget"
 import { getWeather } from "./reducers/weatherReducer"
 import WeatherWidget from "./components/WeatherWidget"
+import { useState } from "react"
 
 const App = () => {
   const dispatch = useDispatch()
+  const [counter, setCounter] = useState(0)
 
   const stationIds = ['033', '070', '162']
   const stopIds = ['HSL:1130439', 'HSL:1130125']
 
   useEffect(() => {
-    console.log('Updated stations')
+    dispatch(updateTime());
     dispatch(getStations(stationIds));
-    const stationInterval = setInterval(() => {
-      dispatch(getStations(stationIds));
-    }, 3 * 60 * 1000); // 3 minutes
-
-    return () => clearInterval(stationInterval);
-  }, [dispatch, stationIds]);
-
-  useEffect(() => {
-    console.log('Updated stops')
     dispatch(getStops(stopIds));
-    const stopInterval = setInterval(() => {
-      dispatch(getStops(stopIds));
-    }, 7 * 60 * 1000); // 7 minutes
+    dispatch(getWeather('Helsinki', 12, 1))
 
-    return () => clearInterval(stopInterval);
-  }, [dispatch, stopIds]);
+    const updateInterval = setInterval(() => {
+      setCounter(() => {
+        const updatedCounter = counter + 1;
+        dispatch(updateTime());
 
-  useEffect(() => {
-    console.log('Updated weather')
-    dispatch(getWeather('Helsinki', 12, 1));
-    const weatherInterval = setInterval(() => {
-      dispatch(getWeather('Helsinki', 12, 1));
-    }, 4 * 3600 * 1000); // 4 hour
+        if (updatedCounter % (3 * 6) === 0) { // 3 minutes
+          dispatch(getStations(stationIds));
+        }
+        if (updatedCounter % (7 * 6) === 0) { // 7 minutes
+          dispatch(getStops(stopIds));
+        }
+        if (updatedCounter % (20 * 6) === 0) { // 20 minutes
+          dispatch(getWeather('Helsinki', 12, 1));
+        }
+        if (updatedCounter > 100 * 6) { // 100 minutes
+          return 0; // Reset counter
+        }
 
-    return () => clearInterval(weatherInterval);
-  }, [dispatch]);
+        return updatedCounter; // Return the updated counter value
+      });
+    }, 10 * 1000); // 10 seconds
 
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      dispatch(updateTime());
-    }, 10000); // 10 seconds
-
-    return () => clearInterval(timeInterval);
-  }, [dispatch]);
+    return () => {
+      clearInterval(updateInterval)
+      setCounter(0)
+    };
+  }, []);
 
   return (
     <div className="flex flex-col bg-background p-4 gap-4 h-screen w-screen">
