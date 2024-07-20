@@ -18,7 +18,7 @@ const stopSlice = createSlice({
       return state.map(stop => {
         return {
           ...stop,
-          routes: stop.routes.filter(route => route.arrival > secondsNow - 60 * 1000)
+          routes: stop.routes.filter(route => route.arrival > secondsNow - 60)
         }
       })
     }

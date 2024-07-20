@@ -24,7 +24,7 @@ const StopRoute = ({ route, type }) => {
 
   const now = new Date(useSelector(state => state.time))
   const secondsNow = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
-  const minutesToArrival = Math.floor(route.arrival - secondsNow)
+  const minutesToArrival = Math.floor((route.arrival - secondsNow) / 60)
 
   const minutesDisplay =
     minutesToArrival < 0
