@@ -3,7 +3,7 @@ const WeatherHour = ({ weather, icon }) => {
 
   return (
     <li className="flex flex-grow h-full bg-widgets items-center rounded-xl justify-around w-80">
-      <div className="flex flex-row gap-2 h-fit w-fit items-center">
+      <div className="flex flex-row gap-2 h-fit w-fit items-center align-middle">
         <span className="font-semibold text-primary text-3xl">{time.getHours()}:{time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes()}</span>
         <img src={icon} alt="weather icon" className="w-10" />
         <span className="font-medium text-primary text-3xl">{Math.round(weather.temperature.value)}°</span>
