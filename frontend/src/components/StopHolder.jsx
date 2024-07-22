@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 
 const StopHolder = () => {
   const stops = useSelector(state => state.stops)
-  console.log(stops)
+
   return (
     <div className="flex flex-col h-full gap-4">
       {stops.map(stop =>
