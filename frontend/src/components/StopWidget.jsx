@@ -26,7 +26,7 @@ const StopWidget = ({ stop }) => {
       </div>
       <ul className='flex flex-col w-2/3 gap-4'>
         {stop.routes.slice(0, 5).map(route =>
-          <StopRoute key={`${route.arrival}${route.routeNumber}`} route={route} type={stop.vehicleMode} />
+          <StopRoute key={`${route.departure}${route.routeNumber}`} route={route} type={stop.vehicleMode} />
         )}
       </ul>
     </div>

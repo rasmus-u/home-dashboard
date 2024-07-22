@@ -15,22 +15,21 @@ const StopRoute = ({ route, type }) => {
     }
   });
 
-
-  const arrivalHour = Math.floor(route.arrival / 3600);
-  const remainingSeconds = route.arrival % 3600;
+  const departureHour = Math.floor(route.departure / 3600);
+  const remainingSeconds = route.departure % 3600;
 
   // Calculate minutes from the remaining seconds
-  const arrivalMinute = Math.floor(remainingSeconds / 60);
+  const departureMinute = Math.floor(remainingSeconds / 60);
 
   const now = new Date(useSelector(state => state.time))
   const secondsNow = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
-  const minutesToArrival = Math.floor((route.arrival - secondsNow) / 60)
+  const minutesToDeparture = Math.floor((route.departure - secondsNow) / 60)
 
   const minutesDisplay =
-    minutesToArrival < 0
+    minutesToDeparture < 0
       ? '0min'
-      : minutesToArrival < 10
-        ? `${minutesToArrival}min`
+      : minutesToDeparture < 10
+        ? `${minutesToDeparture}min`
         : ''
 
   return (
@@ -39,9 +38,9 @@ const StopRoute = ({ route, type }) => {
         {route.routeNumber}
       </div>
       <p className="font-bold text-primary text-4xl">
-        {arrivalHour > 9 ? arrivalHour : `0${arrivalHour}`}
+        {departureHour > 9 ? departureHour : `0${departureHour}`}
         :
-        {arrivalMinute > 9 ? arrivalMinute : `0${arrivalMinute}`}
+        {departureMinute > 9 ? departureMinute : `0${departureMinute}`}
       </p>
       <div className="w-12 text-right text-3xl">
         <p className="text-danger font-bold">

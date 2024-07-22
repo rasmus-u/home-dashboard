@@ -18,7 +18,7 @@ const stopSlice = createSlice({
       return state.map(stop => {
         return {
           ...stop,
-          routes: stop.routes.filter(route => route.arrival > secondsNow - 60)
+          routes: stop.routes.filter(route => route.departure > secondsNow - 60)
         }
       })
     }
@@ -38,7 +38,6 @@ export const getStop = (id) => {
 export const getStops = (ids) => {
   return async dispatch => {
     const stops = await stopService.getMultipleStops(ids)
-
     dispatch(updateStops(stops))
   }
 }

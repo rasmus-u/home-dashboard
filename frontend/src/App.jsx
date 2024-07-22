@@ -17,7 +17,7 @@ const App = () => {
   const stationIds = ['033', '070', '162']
   const stopIds = ['HSL:1130439', 'HSL:1040602']
 
-  // Hanken: HSL:1130439
+  // Hanken: HSL:1130439 
   // Arkadiankatu: HSL:1130125
   // Kamppi subway: HSL:1040602
 
@@ -37,7 +37,7 @@ const App = () => {
         if (updatedCounter % (3 * 6) === 0) { // 3 minutes
           dispatch(getStations(stationIds));
         }
-        if (updatedCounter % (7 * 6) === 0) { // 7 minutes
+        if (updatedCounter % (4 * 6) === 0) { // 4 minutes
           dispatch(getStops(stopIds));
         }
         if (updatedCounter % (20 * 6) === 0) { // 20 minutes
