@@ -15,7 +15,7 @@ const StopRoute = ({ route, type }) => {
     }
   });
 
-  const departureHour = Math.floor(route.departure / 3600);
+  const departureHour = Math.floor(route.departure / 3600) % 24;
   const remainingSeconds = route.departure % 3600;
 
   // Calculate minutes from the remaining seconds
