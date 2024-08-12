@@ -34,10 +34,10 @@ const App = () => {
         dispatch(filterRoutes());
         dispatch(filterWeather())
 
-        if (updatedCounter % (3 * 6) === 0) { // 3 minutes
+        if (updatedCounter % (4 * 6) === 0) { // 4 minutes
           dispatch(getStations(stationIds));
         }
-        if (updatedCounter % (4 * 6) === 0) { // 4 minutes
+        if (updatedCounter % (10 * 6) === 0) { // 10 minutes
           dispatch(getStops(stopIds));
         }
         if (updatedCounter % (20 * 6) === 0) { // 20 minutes
