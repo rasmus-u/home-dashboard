@@ -34,21 +34,21 @@ const App = () => {
         dispatch(filterRoutes());
         dispatch(filterWeather())
 
-        if (updatedCounter % (4 * 6) === 0) { // 4 minutes
+        if (updatedCounter % 4 === 0) { // 4 minutes
           dispatch(getStations(stationIds));
         }
-        if (updatedCounter % (10 * 6) === 0) { // 10 minutes
+        if (updatedCounter % 10 === 0) { // 10 minutes
           dispatch(getStops(stopIds));
         }
-        if (updatedCounter % (20 * 6) === 0) { // 20 minutes
+        if (updatedCounter % 20 === 0) { // 20 minutes
           dispatch(getWeather('Helsinki', 12, 1));
         }
-        if (updatedCounter > 100 * 6) { // 100 minutes
+        if (updatedCounter > 100) { // 100 minutes
           return 0; // Reset counter
         }
         return updatedCounter; // Return the updated counter value
       });
-    }, 10 * 1000); // 10 seconds
+    }, 60 * 1000); // 60 seconds
 
     return () => {
       clearInterval(updateInterval)
