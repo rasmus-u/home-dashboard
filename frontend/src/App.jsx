@@ -15,7 +15,7 @@ const App = () => {
   const [counter, setCounter] = useState(0)
 
   const stationIds = ['033', '070', '162']
-  const stopIds = ['HSL:1130439', 'HSL:1040602']
+  const stopIds = ['HSL:1130439', 'HSL:1130125']
 
   // Hanken: HSL:1130439 
   // Arkadiankatu: HSL:1130125
@@ -34,13 +34,13 @@ const App = () => {
         dispatch(filterRoutes());
         dispatch(filterWeather())
 
-        if (updatedCounter % 4 === 0) { // 4 minutes
+        if (updatedCounter % 3 === 0) { // 3 minutes
           dispatch(getStations(stationIds));
         }
-        if (updatedCounter % 10 === 0) { // 10 minutes
+        if (updatedCounter % 20 === 0) { // 20 minutes
           dispatch(getStops(stopIds));
         }
-        if (updatedCounter % 20 === 0) { // 20 minutes
+        if (updatedCounter % 30 === 0) { // 30 minutes
           dispatch(getWeather('Helsinki', 12, 1));
         }
         if (updatedCounter > 100) { // 100 minutes
